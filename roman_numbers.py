@@ -1,6 +1,8 @@
 #Programa que convierte decimal a romano
 import unittest
 def decimal_to_roman(decimal):
+
+def un_digito(numero):
     if decimal <= 3:
         return "I" * decimal
     if decimal == 4:
@@ -10,7 +12,12 @@ def decimal_to_roman(decimal):
             return ((10 - decimal) * "I") + "X"
         if decimal <= 8:
             return "V" + ((decimal - 5) * "I")
-    
+def dos_digitos(numero):
+    return letra
+def tres_digitos(numero):
+    return letra
+def cuaatro_digitos(numero):
+    return letra
 
 class TestDecimalToRoman(unittest.TestCase):
     def test_uno(self):
@@ -31,6 +38,20 @@ class TestDecimalToRoman(unittest.TestCase):
     def test_nueve(self):
         resultado = decimal_to_roman(9)
         self.assertEqual(resultado, "IX")
-
+    def test_treinta(self):
+        resultado = decimal_to_roman(30)
+        self.assertEqual(resultado, "XXX")
+    def test_cuarentaycuatro(self):
+        resultado = decimal_to_roman(44)
+        self.assertEqual(resultado, "XLIV")
+    def test_setentaysiete(self):
+        resultado = decimal_to_roman(77)
+        self.assertEqual(resultado, "LXXVII")
+    def test_noventaynueve(self):
+        resultado = decimal_to_roman(99)
+        self.assertEqual(resultado, "XCIX")
+    def test_cien(self):
+        resultado = decimal_to_roman(100)
+        self.assertEqual(resultado, "C")
 if __name__ == "__main__":
     unittest.main()
