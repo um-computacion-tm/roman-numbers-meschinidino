@@ -58,7 +58,7 @@ def tres_digitos(numero):
         return "CD"
     else:
         if decimal > 8:
-            return ((10 - decimal) * "C") + "D"
+            return ((10 - decimal) * "C") + "M"
         if decimal <= 8:
             return "D" + ((decimal - 5) * "C")
 def cuatro_digitos(numero):
@@ -106,11 +106,20 @@ class TestDecimalToRoman(unittest.TestCase):
     def test_cien(self):
         resultado = decimal_to_roman(100)
         self.assertEqual(resultado, "C")
+    def test_199(self):
+        resultado = decimal_to_roman(199)
+        self.assertEqual(resultado, "CXCIX")
     def test_quinientoscincuentaycinco(self):
         resultado = decimal_to_roman(555)
         self.assertEqual(resultado, "DLV")
+    def test_999(self):
+        resultado = decimal_to_roman(999)
+        self.assertEqual(resultado, "CMXCIX")
     def test_5555(self):
         resultado = decimal_to_roman(5555)
         self.assertEqual(resultado, "V*DLV")
+    def test_9999(self):
+        resultado = decimal_to_roman(9999)
+        self.assertEqual(resultado, "IX*CMXCIX")
 if __name__ == "__main__":
     unittest.main()
