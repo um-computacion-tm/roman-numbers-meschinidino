@@ -4,6 +4,15 @@ def decimal_to_roman(decimal):
     return generar_numero(decimal)
 def generar_numero(decimal):
     numero = str(decimal)
+    if len(numero) == 4:
+        mil = cuatro_digitos(decimal)
+        decimal = int(numero[1:])
+        centena = tres_digitos(decimal)
+        decimal = int(numero[2:])
+        decena = dos_digitos(decimal)
+        decimal = int(numero[-1])
+        unidad = un_digito(decimal)
+        return mil + centena + decena + unidad
     if len(numero) == 3:
         centena = tres_digitos(decimal)
         decimal = int(numero[1:])
@@ -52,10 +61,17 @@ def tres_digitos(numero):
             return ((10 - decimal) * "C") + "D"
         if decimal <= 8:
             return "D" + ((decimal - 5) * "C")
-    return letra
 def cuatro_digitos(numero):
-    return letra
-
+    decimal = int(str(numero)[0])
+    if decimal <= 3:
+        return "M" * decimal
+    if decimal == 4:
+        return "IV" + "*"
+    else:
+        if decimal > 8:
+            return ((10 - decimal) * "I") + "X" + "*"
+        if decimal <= 8:
+            return "V" + ((decimal - 5) * "I" + "*")
 class TestDecimalToRoman(unittest.TestCase):
     def test_uno(self):
         resultado = decimal_to_roman(1)
@@ -93,5 +109,8 @@ class TestDecimalToRoman(unittest.TestCase):
     def test_quinientoscincuentaycinco(self):
         resultado = decimal_to_roman(555)
         self.assertEqual(resultado, "DLV")
+    def test_5555(self):
+        resultado = decimal_to_roman(5555)
+        self.assertEqual(resultado, "V*DLV")
 if __name__ == "__main__":
     unittest.main()
