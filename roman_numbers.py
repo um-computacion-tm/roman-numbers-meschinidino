@@ -3,6 +3,8 @@ import unittest
 def decimal_to_roman(decimal):
     return generar_numero(decimal)
 def generar_numero(decimal):
+    #usa diferentes funciones para componer un numero según su cantidad de dígitos
+    #empieza desde 4 dígitos, convierte de izquierda a derecha
     numero = str(decimal)
     if len(numero) == 4:
         mil = cuatro_digitos(decimal)
@@ -29,6 +31,7 @@ def generar_numero(decimal):
         return un_digito(decimal)
 
 def un_digito(decimal):
+    #convierte números del 1-9
     if decimal <= 3:
         return "I" * decimal
     if decimal == 4:
@@ -39,6 +42,7 @@ def un_digito(decimal):
         if decimal <= 8:
             return "V" + ((decimal - 5) * "I")
 def dos_digitos(numero):
+    #convierte números del 10-99
     decimal = int(str(numero)[0])
     if decimal <= 3:
         return "X" * decimal
@@ -51,6 +55,7 @@ def dos_digitos(numero):
             return "L" + ((decimal - 5) * "X")
 
 def tres_digitos(numero):
+    #convierte números del 100 - 999
     decimal = int(str(numero)[0])
     if decimal <= 3:
         return "C" * decimal
@@ -62,6 +67,7 @@ def tres_digitos(numero):
         if decimal <= 8:
             return "D" + ((decimal - 5) * "C")
 def cuatro_digitos(numero):
+    #convierte números del 1000 - 9999
     decimal = int(str(numero)[0])
     if decimal <= 3:
         return "M" * decimal
