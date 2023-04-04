@@ -21,7 +21,7 @@ def roman_to_decimal(romano):
             total -= 2
         # una vez restado el monto correspondiente, suma el valor de la letra
         total += ROMANOS[letra]
-        #asigna letra actual al anterior para futuras comparaciones
+        # asigna letra actual al anterior para futuras comparaciones
         anterior = letra
     return total
 
