@@ -1,7 +1,7 @@
 import unittest
 
-from tps.roman_numbers.decimal_to_roman import decimal_to_roman
-from tps.roman_numbers.roman_to_decimal import roman_to_decimal
+from decimal_to_roman import decimal_to_roman
+from roman_to_decimal import roman_to_decimal
 
 
 class MyTest(unittest.TestCase):
